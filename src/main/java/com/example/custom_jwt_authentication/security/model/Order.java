@@ -21,7 +21,6 @@ public class Order {
 
     private String status;
 
-    // Relationship to User
     @ManyToOne
     @JoinColumn(name = "owner_id")
     private User owner;

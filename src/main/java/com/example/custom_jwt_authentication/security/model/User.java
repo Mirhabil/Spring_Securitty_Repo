@@ -28,11 +28,9 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String password;
 
-    // USER, ADMIN roles
     @Column(nullable = false)
     private String role;
 
-    // Relationship: One user has many orders
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
     private java.util.List<Order> orders;
 

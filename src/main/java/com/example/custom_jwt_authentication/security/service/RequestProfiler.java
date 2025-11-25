@@ -26,7 +26,7 @@ public class RequestProfiler {
                 .filter(log -> log.time().isAfter(LocalDateTime.now().minusMinutes(1)))
                 .count();
 
-        return lastMinute > 20; // Example: too many requests
+        return lastMinute > 20;
     }
 
     public record RequestLog(String endpoint, String ip, LocalDateTime time) {}

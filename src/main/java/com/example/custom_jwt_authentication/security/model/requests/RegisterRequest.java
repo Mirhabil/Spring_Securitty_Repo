@@ -10,6 +10,6 @@ public class RegisterRequest {
 
     private String username;
     private String password;
-    private String role; // Optional: ROLE_USER, ROLE_ADMIN
+    private String role;
 }
 
