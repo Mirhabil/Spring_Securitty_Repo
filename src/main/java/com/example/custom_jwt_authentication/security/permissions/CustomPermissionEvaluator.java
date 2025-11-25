@@ -22,7 +22,6 @@ public class CustomPermissionEvaluator implements PermissionEvaluator {
 
         String requiredPermission = (String) permission;
 
-        // Example: domain object is Order
         if (targetDomainObject instanceof Order order) {
             return checkOrderPermission(authentication, order, requiredPermission);
         }
@@ -34,7 +33,6 @@ public class CustomPermissionEvaluator implements PermissionEvaluator {
 
         String username = auth.getName();
 
-        // Example domain rules
         if (permission.equals("ORDER_VIEW") && order.getOwner().equals(username)) {
             return true;
         }
