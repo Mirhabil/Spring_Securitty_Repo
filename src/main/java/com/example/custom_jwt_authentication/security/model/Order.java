@@ -17,17 +17,15 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Example business fields
     private Double totalAmount;
 
-    private String status; // NEW, PROCESSING, COMPLETED
+    private String status;
 
     // Relationship to User
     @ManyToOne
     @JoinColumn(name = "owner_id")
     private User owner;
 
-    // Helper to get username easily
     public String getOwnerUsername() {
         return owner.getUsername();
     }
