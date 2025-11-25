@@ -1,8 +1,11 @@
 package com.example.custom_jwt_authentication.security.controller;
 
+import com.example.custom_jwt_authentication.security.model.User;
 import com.example.custom_jwt_authentication.security.model.requests.LoginRequest;
+import com.example.custom_jwt_authentication.security.model.requests.RegisterRequest;
 import com.example.custom_jwt_authentication.security.model.responses.TokenResponse;
 import com.example.custom_jwt_authentication.security.service.JwtService;
+import com.example.custom_jwt_authentication.security.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -26,6 +29,9 @@ public class AuthController {
     @Autowired
     private JwtService jwtService;
 
+    @Autowired
+    private UserService userService;
+
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest request) {
 
@@ -41,5 +47,14 @@ public class AuthController {
 
         return ResponseEntity.ok(new TokenResponse(token));
     }
+
+    @PostMapping("/signup")
+    public ResponseEntity<?> register(@RequestBody RegisterRequest request) {
+
+        User newUser = userService.register(request);
+
+        return ResponseEntity.ok("User registered successfully: " + newUser.getUsername());
+    }
+
 }
 
